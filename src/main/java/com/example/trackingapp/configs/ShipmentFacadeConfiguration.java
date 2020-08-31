@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @RequiredArgsConstructor
 public class ShipmentFacadeConfiguration {
-
+    private final ShipmentStatusStrategy statusStrategy;
     ShipmentFacade testShipmentFacade() {
         return shipmentFacade(new InMemoryShipmentRepository());
     }
@@ -25,7 +25,7 @@ public class ShipmentFacadeConfiguration {
                 new ShipmentService(
                         shipmentRepository,
                         new ShipmentFactory(new ShipmentStatusFactory()),
-                        new ShipmentUpdater(new ShipmentStatusFactory())
+                        new ShipmentUpdater(statusStrategy)
                 )
         );
     }

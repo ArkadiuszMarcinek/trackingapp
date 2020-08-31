@@ -19,7 +19,6 @@ public class ShipmentStatus {
 
     public enum Status {
         ORDERED,
-        RECEIVED_FROM_SENDER,
         IN_TRANSPORT,
         DELIVERED
     }
