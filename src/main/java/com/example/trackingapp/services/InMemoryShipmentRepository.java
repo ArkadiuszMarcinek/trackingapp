@@ -20,6 +20,6 @@ public class InMemoryShipmentRepository implements ShipmentRepository {
 
     @Override
     public ShipmentEntity save(ShipmentEntity shipmentEntity) {
-        return db.put(shipmentEntity.getShipmentId(), shipmentEntity);
+        return db.replace(shipmentEntity.getShipmentId(), shipmentEntity);
     }
 }

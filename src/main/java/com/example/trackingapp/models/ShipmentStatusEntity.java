@@ -26,7 +26,6 @@ public class ShipmentStatusEntity {
     @Column(name = "DATE_FROM", updatable = false)
     private @NonNull LocalDateTime dateFrom;
     @Column(name = "DATE_TO")
-    @With
     private LocalDateTime dateTo;
     @Column(name = "STATUS", updatable = false)
     private @NonNull ShipmentStatus.Status status;
