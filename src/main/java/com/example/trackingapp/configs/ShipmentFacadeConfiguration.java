@@ -7,6 +7,7 @@ import com.example.trackingapp.services.InMemoryShipmentRepository;
 import com.example.trackingapp.services.ShipmentRepository;
 import com.example.trackingapp.services.ShipmentService;
 import com.example.trackingapp.services.ShipmentUpdater;
+import com.example.trackingapp.strategy.ShipmentStatusStrategy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
