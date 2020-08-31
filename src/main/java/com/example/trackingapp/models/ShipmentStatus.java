@@ -1,4 +1,4 @@
-package com.example.trackingapp.models.dto;
+package com.example.trackingapp.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;

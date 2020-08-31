@@ -1,19 +1,22 @@
 package com.example.trackingapp.facade;
 
+import com.example.trackingapp.models.ShipmentStatus;
 import com.example.trackingapp.models.dto.Shipment;
-import com.example.trackingapp.models.dto.ShipmentBase;
-import com.example.trackingapp.models.dto.ShipmentStatus;
 import com.example.trackingapp.services.ShipmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
+@Transactional(rollbackFor = Exception.class)
 public class ShipmentFacade {
 
     private final ShipmentService shipmentService;
 
-    @Transactional
-    public ShipmentBase findShipmentByTrackingNumber(String trackingNumber) {
+    public Shipment findShipmentBaseByTrackingNumber(String trackingNumber) {
+        return shipmentService.findShipmentBaseByTrackingNumber(trackingNumber);
+    }
+
+    public Shipment findShipmentByTrackingNumber(String trackingNumber) {
         return shipmentService.findShipmentByTrackingNumber(trackingNumber);
     }
 

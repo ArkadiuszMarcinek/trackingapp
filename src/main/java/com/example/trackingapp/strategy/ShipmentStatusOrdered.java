@@ -2,13 +2,11 @@ package com.example.trackingapp.strategy;
 
 import com.example.trackingapp.factory.ShipmentStatusFactory;
 import com.example.trackingapp.models.ShipmentEntity;
+import com.example.trackingapp.models.ShipmentStatus;
 import com.example.trackingapp.models.ShipmentStatusEntity;
-import com.example.trackingapp.models.dto.ShipmentStatus;
 import com.example.trackingapp.utils.ShipmentMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -23,9 +21,7 @@ public class ShipmentStatusOrdered implements AbstractShipmentStatusStrategy {
 
     @Override
     public ShipmentEntity update(ShipmentEntity shipment) {
-        return Optional.of(shipment)
-                .map(ShipmentEntity::getLastStatus)
-                .filter(optStatus -> !optStatus.isPresent())
+        return shipment.getLastStatus()
                 .map(__ -> statusFactory.createStatus())
                 .map(ShipmentMapper::map)
                 .map(shipmentStatus -> updateShipment(shipment, shipmentStatus))

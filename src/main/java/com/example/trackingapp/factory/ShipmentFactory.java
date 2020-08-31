@@ -1,7 +1,7 @@
 package com.example.trackingapp.factory;
 
+import com.example.trackingapp.models.ShipmentStatus;
 import com.example.trackingapp.models.dto.Shipment;
-import com.example.trackingapp.models.dto.ShipmentStatus;
 import com.example.trackingapp.utils.DateUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

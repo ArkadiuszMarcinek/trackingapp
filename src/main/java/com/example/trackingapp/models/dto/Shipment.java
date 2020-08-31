@@ -1,21 +1,32 @@
 package com.example.trackingapp.models.dto;
 
+import com.example.trackingapp.models.ShipmentStatus;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.experimental.SuperBuilder;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Getter
-@SuperBuilder
-public class Shipment extends ShipmentBase {
+@Builder
+public class Shipment {
 
+    private final String trackingNumber;
+
+    private final List<ShipmentStatus> statusHistory;
+
+    private final String postDate;
+
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    private final String receiptDate;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @Valid
     private final Sender sender;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @Valid
     private final Recipient recipient;
 
-    public Shipment(String trackingNumber, List<ShipmentStatus> statusHistory, String postDate, String receiptDate, Sender sender, Recipient recipient) {
-        super(trackingNumber, statusHistory, postDate, receiptDate);
-        this.sender = sender;
-        this.recipient = recipient;
-    }
 }

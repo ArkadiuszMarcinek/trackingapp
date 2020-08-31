@@ -3,7 +3,7 @@ package com.example.trackingapp.services;
 
 import com.example.trackingapp.exceptions.UnexpectedException;
 import com.example.trackingapp.models.ShipmentEntity;
-import com.example.trackingapp.models.dto.ShipmentStatus;
+import com.example.trackingapp.models.ShipmentStatus;
 import com.example.trackingapp.strategy.ShipmentStatusStrategy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

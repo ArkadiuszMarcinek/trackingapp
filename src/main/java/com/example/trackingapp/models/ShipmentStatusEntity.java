@@ -1,6 +1,5 @@
 package com.example.trackingapp.models;
 
-import com.example.trackingapp.models.dto.ShipmentStatus;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 

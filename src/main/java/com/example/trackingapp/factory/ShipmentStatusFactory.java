@@ -1,6 +1,6 @@
 package com.example.trackingapp.factory;
 
-import com.example.trackingapp.models.dto.ShipmentStatus;
+import com.example.trackingapp.models.ShipmentStatus;
 import com.example.trackingapp.utils.DateUtils;
 import org.springframework.stereotype.Component;
 

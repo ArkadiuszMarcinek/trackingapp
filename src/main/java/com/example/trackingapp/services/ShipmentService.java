@@ -3,9 +3,8 @@ package com.example.trackingapp.services;
 import com.example.trackingapp.exceptions.ShipmentNotFoundException;
 import com.example.trackingapp.exceptions.UnexpectedException;
 import com.example.trackingapp.factory.ShipmentFactory;
+import com.example.trackingapp.models.ShipmentStatus;
 import com.example.trackingapp.models.dto.Shipment;
-import com.example.trackingapp.models.dto.ShipmentBase;
-import com.example.trackingapp.models.dto.ShipmentStatus;
 import com.example.trackingapp.utils.ShipmentMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class ShipmentService {
     private final ShipmentFactory shipmentFactory;
     private final ShipmentUpdater shipmentUpdater;
 
-    public ShipmentBase findShipmentByTrackingNumber(String trackingNumber) {
+    public Shipment findShipmentBaseByTrackingNumber(String trackingNumber) {
         return shipmentRepository.findShipmentByTrackingNumber(trackingNumber)
                 .map(ShipmentMapper::mapToBase)
                 .orElseThrow(ShipmentNotFoundException::new);
@@ -39,5 +38,11 @@ public class ShipmentService {
                 .map(shipment -> shipmentUpdater.updateStatus(shipment, newStatus))
                 .map(ShipmentMapper::map)
                 .orElseThrow(UnexpectedException::new);
+    }
+
+    public Shipment findShipmentByTrackingNumber(String trackingNumber) {
+        return shipmentRepository.findShipmentByTrackingNumber(trackingNumber)
+                .map(ShipmentMapper::map)
+                .orElseThrow(ShipmentNotFoundException::new);
     }
 }

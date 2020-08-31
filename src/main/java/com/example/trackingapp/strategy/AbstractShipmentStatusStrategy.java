@@ -1,9 +1,8 @@
-
 package com.example.trackingapp.strategy;
 
 import com.example.trackingapp.models.ShipmentEntity;
+import com.example.trackingapp.models.ShipmentStatus;
 import com.example.trackingapp.models.ShipmentStatusEntity;
-import com.example.trackingapp.models.dto.ShipmentStatus;
 
 import java.time.LocalDateTime;
 

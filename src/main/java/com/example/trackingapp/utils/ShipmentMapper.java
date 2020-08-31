@@ -1,22 +1,24 @@
 package com.example.trackingapp.utils;
 
-import com.example.trackingapp.models.RecipientEntity;
-import com.example.trackingapp.models.SenderEntity;
-import com.example.trackingapp.models.ShipmentEntity;
-import com.example.trackingapp.models.ShipmentStatusEntity;
-import com.example.trackingapp.models.dto.*;
+import com.example.trackingapp.models.*;
+import com.example.trackingapp.models.dto.Recipient;
+import com.example.trackingapp.models.dto.Sender;
+import com.example.trackingapp.models.dto.Shipment;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ShipmentMapper {
 
-    public static ShipmentBase mapToBase(ShipmentEntity entity) {
-        return ShipmentBase.builder()
+    public static Shipment mapToBase(ShipmentEntity entity) {
+        return Shipment.builder()
                 .receiptDate(DateUtils.getFormattedDate(entity.getReceiptDate()))
                 .postDate(entity.getPostDate().format(DateUtils.getDateFormatted()))
                 .trackingNumber(entity.getTrackingNumber())
@@ -75,7 +77,6 @@ public class ShipmentMapper {
     }
 
 
-
     public static ShipmentEntity map(Shipment shipment) {
         return ShipmentEntity.builder()
                 .shipmentId(UUID.randomUUID())
@@ -102,7 +103,6 @@ public class ShipmentMapper {
                 .status(status.getStatus())
                 .build();
     }
-
 
 
     public static RecipientEntity map(Recipient recipient) {
