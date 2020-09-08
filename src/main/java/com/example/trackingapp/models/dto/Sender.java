@@ -3,6 +3,7 @@ package com.example.trackingapp.models.dto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -20,10 +21,10 @@ public class Sender {
     @Pattern(regexp = "[A-Za-z]+")
     private final String lastName;
     @NotBlank
-    @Pattern(regexp = "[A-Za-z\\s]+")
+    @Length(min = 6)
     private final String street;
     @NotBlank
-    @Pattern(regexp = "^\\d{2}[- ]{0,1}\\d{3}$")
+    @Pattern(regexp = "^\\d{2}[- ]?\\d{3}$")
     private final String postalCode;
     @NotBlank
     @Pattern(regexp = "[A-Za-z\\s]+")

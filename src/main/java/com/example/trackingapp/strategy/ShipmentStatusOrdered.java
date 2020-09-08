@@ -23,7 +23,7 @@ public class ShipmentStatusOrdered implements AbstractShipmentStatusStrategy {
     public ShipmentEntity update(ShipmentEntity shipment) {
         return shipment.getLastStatus()
                 .filter(lastStatus -> isNotContainsOrderedStatus(shipment))
-                .map(__ -> statusFactory.createStatus())
+                .map(ignore -> statusFactory.createStatus())
                 .map(ShipmentMapper::map)
                 .map(shipmentStatus -> updateShipment(shipment, shipmentStatus))
                 .orElseThrow(IllegalArgumentException::new);
@@ -32,9 +32,7 @@ public class ShipmentStatusOrdered implements AbstractShipmentStatusStrategy {
     private boolean isNotContainsOrderedStatus(ShipmentEntity shipment) {
         return shipment.getStatusHistory().stream()
                 .map(ShipmentStatusEntity::getStatus)
-                .filter(ShipmentStatus.Status.ORDERED::equals)
-                .findAny()
-                .isEmpty();
+                .noneMatch(ShipmentStatus.Status.ORDERED::equals);
     }
 
     private ShipmentEntity updateShipment(ShipmentEntity shipment, ShipmentStatusEntity shipmentStatus) {

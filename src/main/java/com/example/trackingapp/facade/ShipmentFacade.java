@@ -20,12 +20,10 @@ public class ShipmentFacade {
         return shipmentService.findShipmentByTrackingNumber(trackingNumber);
     }
 
-    @Transactional
     public Shipment orderShipment(Shipment shipment) {
         return shipmentService.createOrderShipment(shipment);
     }
 
-    @Transactional
     public Shipment changeShipmentStatus(String trackingNumber, ShipmentStatus.Status newStatus) {
         return shipmentService.changeShipmentStatus(trackingNumber, newStatus);
     }
